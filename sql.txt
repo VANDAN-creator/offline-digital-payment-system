@@ -1,0 +1,10 @@
+CREATE TEMPORARY TABLE temp_table AS
+SELECT email
+FROM transactions
+WHERE id = first;
+UPDATE transactions
+SET email = (SELECT email FROM temp_table)
+WHERE id = second;
+DROP TEMPORARY TABLE IF EXISTS temp_table;
+DELETE FROM transactions
+WHERE id = first;
